@@ -1,10 +1,13 @@
 # instagram-access-token
 Get the access token of your Instagram App
 
+
 ## Usage
 
-1 - Complete config.py
+**First method**
 
-2 - Execute python main.py
+Complete config.py and execute *python main.py*
 
+**Second method**
 
+*python.py client_id client_secret redirect_uri code*

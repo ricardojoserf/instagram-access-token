@@ -31,10 +31,13 @@ def get_token(client_id, client_secret, redirect_uri, code):
 def main():
 
 	if(config.client_id == "" or config.client_secret == ""):
-		print("Please fill the config.py file")
+		print("Using the values sys.agv[1:4], not the config.py file")
+		token = get_token(sys.agv[1], sys.agv[2], sys.agv[3], sys.agv[4])
 		return
-
-	token = get_token(config.client_id, config.client_secret, config.redirect_uri, config.code)
+	
+	else:
+		print("Using the values in the config.py file")
+		token = get_token(config.client_id, config.client_secret, config.redirect_uri, config.code)
 
 	if(token != ""):
 		print("ACCESS TOKEN = "+token+"")
