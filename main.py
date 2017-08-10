@@ -31,7 +31,7 @@ def get_token(client_id, client_secret, redirect_uri, code):
 def main():
 
 	if(config.client_id == "" or config.client_secret == ""):
-		print("Plase fill the config.py file")
+		print("Please fill the config.py file")
 		return
 
 	token = get_token(config.client_id, config.client_secret, config.redirect_uri, config.code)
