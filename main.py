@@ -17,7 +17,7 @@ def get_token(client_id, client_secret, redirect_uri, code):
 
 		access_token = respJson.get("access_token")
 		if(access_token == None):
-			print("ERROR: " + respJson.get("error_message") + " Get a new code and add it to the config file visiting: \n\nhttps://api.instagram.com/oauth/authorize/?client_id="+client_id+"&redirect_uri="+redirect_uri+"&response_type=code \n\nThe code is after /?code=")
+			print("ERROR: " + respJson.get("error_message") + "\n Get a new code and add it to the config file visiting: \n\nhttps://api.instagram.com/oauth/authorize/?client_id="+client_id+"&redirect_uri="+redirect_uri+"&response_type=code \n\nThe code is after /?code=")
 			return ""
 
 		else:
