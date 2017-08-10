@@ -32,7 +32,7 @@ def main():
 
 	if(config.client_id == "" or config.client_secret == ""):
 		print("Using the values sys.agv[1:4], not the config.py file")
-		token = get_token(sys.agv[1], sys.agv[2], sys.agv[3], sys.agv[4])
+		token = get_token(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
 		return
 	
 	else:
