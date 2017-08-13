@@ -10,33 +10,33 @@ def get_token(client_id, client_secret, redirect_uri, code):
 	    https://api.instagram.com/oauth/access_token 2>/dev/null"
 
 	resp = os.popen(command).read()
-
+	
 	respJson = json.loads(resp)
 
 	try:
 
 		access_token = respJson.get("access_token")
 		if(access_token == None):
-			print("ERROR: " + respJson.get("error_message") + "\n Get a new code and add it to the config file visiting: \n\nhttps://api.instagram.com/oauth/authorize/?client_id="+client_id+"&redirect_uri="+redirect_uri+"&response_type=code \n\nThe code is after /?code=")
-			return ""
+			return("\n ERROR: " + respJson.get("error_message") + "\n Get a new code and add it to the config file visiting: \n\nhttps://api.instagram.com/oauth/authorize/?client_id="+client_id+"&redirect_uri="+redirect_uri+"&response_type=code \n\nThe code is after /?code=")
 
 		else:
 			return str(access_token)
 
 	except:
-		print("Well this was unexpected...")
+		# print("Well this error was unexpected...")
 		return ""
 
 
 def main():
 
 	if(config.client_id == "" or config.client_secret == ""):
-		print("Using the values sys.agv[1:4], not the config.py file")
-		token = get_token(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
+		#print("Using the arguments, not the config.py file")
+		args=cli.get_args()
+		token = get_token(args.client_id, args.client_secret, args.redirect_uri, args.code)
 		return
 	
 	else:
-		print("Using the values in the config.py file")
+		#print("Using the values in the config.py file")
 		token = get_token(config.client_id, config.client_secret, config.redirect_uri, config.code)
 
 	if(token != ""):
